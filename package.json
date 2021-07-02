@@ -1,0 +1,22 @@
+{
+  "name": "fur-friends",
+  "version": "1.0.0",
+  "description": "FUR EVER HOME",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Stubblefish/Fur_Friends.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Stubblefish/Fur_Friends/issues"
+  },
+  "homepage": "https://github.com/Stubblefish/Fur_Friends#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0"
+  }
+}
