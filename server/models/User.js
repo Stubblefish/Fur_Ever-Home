@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 const bcrypt = require("bcrypt");
 const Adopt = require("./Adopt");
 
-const UserSchema = new Schema({
+const userSchema = new Schema({
   firstName: {
     type: String,
     required: true,

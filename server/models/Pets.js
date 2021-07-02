@@ -20,7 +20,9 @@ const petsSchema = new Schema({
     min: 0.99,
   },
   breed: {
-    type: String,
+    type: Schema.Types.ObjectId,
+    ref: "Breed",
+    required: true,
   },
   age: {
     type: Number,
@@ -29,4 +31,4 @@ const petsSchema = new Schema({
 
 const Pets = mongoose.model("Pets", petsSchema);
 
-module.exports = Product;
+module.exports = Pets;
