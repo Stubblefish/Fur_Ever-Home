@@ -31,4 +31,4 @@ const petsSchema = new Schema({
 
 const Pets = mongoose.model("Pets", petsSchema);
 
-module.exports = Product;
+module.exports = Pets;
