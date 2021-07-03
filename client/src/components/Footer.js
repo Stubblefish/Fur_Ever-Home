@@ -94,6 +94,7 @@ const Footer = () => {
         © 2021 UCB BOOTCAMP.
         All Rights Reserved.
       </div>
+      <br></br>
     </div>
   )
 }
