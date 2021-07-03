@@ -35,13 +35,13 @@ db.once("open", async () => {
   await User.deleteMany();
 
   await User.create({
-      firstName: 'George',
-      lastName: 'Wise';
-      email: 'George@gmail.com',
-      password: 'Password',      
+    firstName: "George",
+    lastName: "Wise",
+    email: "George@gmail.com",
+    password: "Password",
   });
 
-  console.log('User seeded!')
+  console.log("User seeded!");
 
   process.exit();
 });
