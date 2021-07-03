@@ -1,6 +1,8 @@
 .homeContainer {
     position: relative;
     height: 50vw;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 .homeImage {

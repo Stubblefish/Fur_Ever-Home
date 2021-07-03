@@ -17,6 +17,7 @@ import Dialog from '@material-ui/core/Dialog';
 import CloseIcon from '@material-ui/icons/Close';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
 import MuiDialogContent from '@material-ui/core/DialogContent';
+import Login from '../components/Login';
 
 
 
@@ -112,6 +113,7 @@ export default function ButtonAppBar() {
               Log in
             </DialogTitle>
             <DialogContent dividers>
+              <Login />
             </DialogContent>
           </Dialog>
         </Toolbar>
