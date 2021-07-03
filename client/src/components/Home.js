@@ -85,7 +85,7 @@ const Home = () => {
       <CssBaseline />
       <div className="homeContainer">
         <img src={wallpaper} alt="Wallpaper" className="homeImage" />
-        <Container style={{ position: 'realative' }} maxWidth="lg" className="homeText">
+        <Container style={{ position: 'realative' }} maxWidth="xl" className="homeText">
           <h3 className="homeTextName">You know...</h3>
           <h3 className="homeTextTitle">Wagging tails will never disappoint</h3>
           <Button className={classes.button} onClick={handleClickOpen}>Create Account</Button>
@@ -94,7 +94,7 @@ const Home = () => {
           onClose={handleClose}
           aria-labelledby="customized-dialog-title"
           open={open}
-          maxWidth="sm"
+          maxWidth="xs"
           fullScreen={fullScreen}
         >
           <DialogTitle id="customized-dialog-title" onClose={handleClose}>
