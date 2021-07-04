@@ -68,13 +68,13 @@ const DialogContent = withStyles((theme) => ({
 
 const Home = () => {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+  const [CreateAccountOpen, setCreateAccountOpen] = React.useState(false);
 
-  const handleClickOpen = () => {
-    setOpen(true);
+  const handleCreateOpen = () => {
+    setCreateAccountOpen(true);
   };
-  const handleClose = () => {
-    setOpen(false);
+  const handleCreateClose = () => {
+    setCreateAccountOpen(false);
   };
 
   const theme = useTheme();
@@ -88,16 +88,16 @@ const Home = () => {
         <Container style={{ position: 'realative' }} maxWidth="xl" className="homeText">
           <h3 className="homeTextName">You know...</h3>
           <h3 className="homeTextTitle">Wagging tails will never disappoint</h3>
-          <Button className={classes.button} onClick={handleClickOpen}>Create Account</Button>
+          <Button className={classes.button} onClick={handleCreateOpen}>Create Account</Button>
         </Container>
         <Dialog
-          onClose={handleClose}
+          onClose={handleCreateClose}
           aria-labelledby="customized-dialog-title"
-          open={open}
+          open={CreateAccountOpen}
           maxWidth="xs"
           fullScreen={fullScreen}
         >
-          <DialogTitle id="customized-dialog-title" onClose={handleClose}>
+          <DialogTitle id="customized-dialog-title" onClose={handleCreateClose}>
             Create Account
           </DialogTitle>
           <DialogContent dividers>

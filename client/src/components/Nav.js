@@ -79,17 +79,17 @@ const DialogContent = withStyles((theme) => ({
 }))(MuiDialogContent);
 
 
-export default function ButtonAppBar() {
+const Nav = () => {
   const classes = useStyles();
   const theme = useTheme();
   const mobile = useMediaQuery(theme.breakpoints.down('sm'));
-  const [open, setOpen] = React.useState(false);
+  const [loginOpen, setLoginOpen] = React.useState(false);
 
-  const handleClickOpen = () => {
-    setOpen(true);
+  const handleLoginOpen = () => {
+    setLoginOpen(true);
   };
-  const handleClose = () => {
-    setOpen(false);
+  const handleLoginClose = () => {
+    setLoginOpen(false);
   };
 
   return (
@@ -101,15 +101,15 @@ export default function ButtonAppBar() {
           </Typography>
           {mobile ? <IconButton className={classes.button}><SearchIcon /> </IconButton> : <Button className={classes.button} color="inherit">Search fur family</Button>}
           {mobile ? <IconButton className={classes.button}><FavoriteBorderIcon /> </IconButton> : <Button className={classes.button} color="inherit">Who's ready?</Button>}
-          {mobile ? <IconButton className={classes.button} onClick={handleClickOpen}><LockOpenIcon /> </IconButton> : <Button className={classes.button} color="inherit" onClick={handleClickOpen}>log in</Button>}
+          {mobile ? <IconButton className={classes.button} onClick={handleLoginOpen}><LockOpenIcon /> </IconButton> : <Button className={classes.button} color="inherit" onClick={handleLoginOpen}>log in</Button>}
           <Dialog
-            onClose={handleClose}
+            onClose={handleLoginClose}
             aria-labelledby="customized-dialog-title"
-            open={open}
+            open={loginOpen}
             maxWidth="xs"
             fullScreen={mobile}
           >
-            <DialogTitle id="customized-dialog-title" onClose={handleClose}>
+            <DialogTitle id="customized-dialog-title" onClose={handleLoginClose}>
               Log in
             </DialogTitle>
             <DialogContent dividers>
@@ -121,3 +121,5 @@ export default function ButtonAppBar() {
     </div>
   );
 }
+
+export default Nav;

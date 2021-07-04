@@ -16,7 +16,7 @@ function Copyright() {
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="https://material-ui.com/">
-       Fur-Ever Home
+        Fur-Ever Home
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignUp() {
+const CreateAccount = () => {
   const classes = useStyles();
 
   return (
@@ -60,7 +60,7 @@ export default function SignUp() {
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
-          <LockOutlinedIcon className={classes.icon}/>
+          <LockOutlinedIcon className={classes.icon} />
         </Avatar>
         <Typography component="h1" variant="h5">
           Sign up
@@ -134,3 +134,5 @@ export default function SignUp() {
     </Container>
   );
 }
+
+export default CreateAccount;

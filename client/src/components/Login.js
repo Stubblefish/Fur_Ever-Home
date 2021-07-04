@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignIn() {
+const Login = () => {
   const classes = useStyles();
 
   return (
@@ -60,7 +60,7 @@ export default function SignIn() {
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
-          <LockOpenOutlined className={classes.icon}/>
+          <LockOpenOutlined className={classes.icon} />
         </Avatar>
         <Typography component="h1" variant="h5">
           Log in
@@ -110,3 +110,4 @@ export default function SignIn() {
     </Container>
   );
 }
+export default Login;
