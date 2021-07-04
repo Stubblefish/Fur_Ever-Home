@@ -2,13 +2,13 @@ const mongoose = require("mongoose");
 
 const { Schema } = mongoose;
 
-const AdoptSchema = new Schema({
+const adoptSchema = new Schema({
   AdoptDate: {
     type: Date,
     default: Date.new,
   },
 });
 
-const Order = mongoose.model("Order", orderSchema);
+const Adoption = mongoose.model("Adoption", adoptSchema);
 
-module.exports = Order;
+module.exports = Adoption;
