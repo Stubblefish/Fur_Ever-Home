@@ -15,6 +15,7 @@ import { useTheme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import CreateAccount from '../components/CreateAccount';
 import './Home.css';
+import SharedContext from "./SharedContext";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -68,20 +69,13 @@ const DialogContent = withStyles((theme) => ({
 
 const Home = () => {
   const classes = useStyles();
-  const [CreateAccountOpen, setCreateAccountOpen] = React.useState(false);
-
-  const handleCreateOpen = () => {
-    setCreateAccountOpen(true);
-  };
-  const handleCreateClose = () => {
-    setCreateAccountOpen(false);
-  };
-
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  const { createAccountOpen, setCreateAccountOpen, handleCreateOpen, handleCreateClose } = React.useContext(SharedContext);
 
   return (
     <React.Fragment>
+      <SharedContext.Provider value={{createAccountOpen, setCreateAccountOpen, handleCreateClose, handleCreateOpen}} >
       <CssBaseline />
       <div className="homeContainer">
         <img src={wallpaper} alt="Wallpaper" className="homeImage" />
@@ -93,7 +87,7 @@ const Home = () => {
         <Dialog
           onClose={handleCreateClose}
           aria-labelledby="customized-dialog-title"
-          open={CreateAccountOpen}
+          open={createAccountOpen}
           maxWidth="xs"
           fullScreen={fullScreen}
         >
@@ -105,6 +99,7 @@ const Home = () => {
           </DialogContent>
         </Dialog>
       </div>
+      </SharedContext.Provider>
     </React.Fragment>
   );
 }

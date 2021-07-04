@@ -18,6 +18,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
 import MuiDialogContent from '@material-ui/core/DialogContent';
 import Login from '../components/Login';
+import SharedContext from './SharedContext';
 
 
 
@@ -80,20 +81,14 @@ const DialogContent = withStyles((theme) => ({
 
 
 const Nav = () => {
+  const {loginOpen, setLoginOpen, handleLoginOpen, handleLoginClose} = React.useContext(SharedContext);
   const classes = useStyles();
   const theme = useTheme();
   const mobile = useMediaQuery(theme.breakpoints.down('sm'));
-  const [loginOpen, setLoginOpen] = React.useState(false);
-
-  const handleLoginOpen = () => {
-    setLoginOpen(true);
-  };
-  const handleLoginClose = () => {
-    setLoginOpen(false);
-  };
 
   return (
     <div className={classes.root}>
+      <SharedContext.Provider value = {{loginOpen, setLoginOpen, handleLoginClose, handleLoginOpen}}>
       <AppBar style={{ backgroundColor: "black" }} elevation={0} position="static">
         <Toolbar>
           <Typography variant="h3" className={classes.title} as={Link} to='/'>
@@ -118,6 +113,7 @@ const Nav = () => {
           </Dialog>
         </Toolbar>
       </AppBar>
+      </SharedContext.Provider>
     </div>
   );
 }

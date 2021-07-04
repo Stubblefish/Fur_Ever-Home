@@ -10,6 +10,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import SharedContext from './SharedContext';
 
 function Copyright() {
   return (
@@ -54,9 +55,10 @@ const useStyles = makeStyles((theme) => ({
 
 const CreateAccount = () => {
   const classes = useStyles();
-
+  const {loginOpen, setLoginOpen, handleLoginOpen, handleLoginClose} = React.useContext(SharedContext);
   return (
     <Container component="main" maxWidth="sm">
+      <SharedContext.Provider value = {{loginOpen, setLoginOpen, handleLoginClose, handleLoginOpen}}>
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
@@ -96,6 +98,7 @@ const CreateAccount = () => {
                 id="email"
                 label="Email Address"
                 name="email"
+                autoComplete="email"
               />
             </Grid>
             <Grid item xs={12}>
@@ -107,6 +110,7 @@ const CreateAccount = () => {
                 label="Password"
                 type="password"
                 id="password"
+                autoComplete="current-password"
               />
             </Grid>
           </Grid>
@@ -121,7 +125,7 @@ const CreateAccount = () => {
           </Button>
           <Grid>
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link href="#" onClick={handleLoginOpen} variant="body2">
                 Already have an account? Log in
               </Link>
             </Grid>
@@ -131,6 +135,7 @@ const CreateAccount = () => {
       <Box mt={5}>
         <Copyright />
       </Box>
+      </SharedContext.Provider>
     </Container>
   );
 }
