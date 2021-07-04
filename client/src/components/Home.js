@@ -71,34 +71,34 @@ const Home = () => {
   const classes = useStyles();
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
-  const { createAccountOpen, setCreateAccountOpen, handleCreateOpen, handleCreateClose } = React.useContext(SharedContext);
+  const { createAccountOpen, setCreateAccountOpen, handleLoginOpen, handleCreateOpen, handleCreateClose } = React.useContext(SharedContext);
 
   return (
     <React.Fragment>
-      <SharedContext.Provider value={{createAccountOpen, setCreateAccountOpen, handleCreateClose, handleCreateOpen}} >
-      <CssBaseline />
-      <div className="homeContainer">
-        <img src={wallpaper} alt="Wallpaper" className="homeImage" />
-        <Container style={{ position: 'realative' }} maxWidth="xl" className="homeText">
-          <h3 className="homeTextName">You know...</h3>
-          <h3 className="homeTextTitle">Wagging tails will never disappoint</h3>
-          <Button className={classes.button} onClick={handleCreateOpen}>Create Account</Button>
-        </Container>
-        <Dialog
-          onClose={handleCreateClose}
-          aria-labelledby="customized-dialog-title"
-          open={createAccountOpen}
-          maxWidth="xs"
-          fullScreen={fullScreen}
-        >
-          <DialogTitle id="customized-dialog-title" onClose={handleCreateClose}>
-            Create Account
-          </DialogTitle>
-          <DialogContent dividers>
-            <CreateAccount />
-          </DialogContent>
-        </Dialog>
-      </div>
+      <SharedContext.Provider value={{ createAccountOpen, handleLoginOpen, setCreateAccountOpen, handleCreateClose, handleCreateOpen }} >
+        <CssBaseline />
+        <div className="homeContainer">
+          <img src={wallpaper} alt="Wallpaper" className="homeImage" />
+          <Container style={{ position: 'realative' }} maxWidth="xl" className="homeText">
+            <h3 className="homeTextName">You know...</h3>
+            <h3 className="homeTextTitle">Wagging tails will never disappoint</h3>
+            <Button className={classes.button} onClick={handleCreateOpen}>Create Account</Button>
+          </Container>
+          <Dialog
+            onClose={handleCreateClose}
+            aria-labelledby="customized-dialog-title"
+            open={createAccountOpen}
+            maxWidth="xs"
+            fullScreen={fullScreen}
+          >
+            <DialogTitle id="customized-dialog-title" onClose={handleCreateClose}>
+              Create Account
+            </DialogTitle>
+            <DialogContent dividers>
+              <CreateAccount />
+            </DialogContent>
+          </Dialog>
+        </div>
       </SharedContext.Provider>
     </React.Fragment>
   );

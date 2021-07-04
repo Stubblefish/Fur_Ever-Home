@@ -12,18 +12,22 @@ function App() {
 
   const handleLoginOpen = () => {
     setLoginOpen(true);
+    console.log("login form opening")
   };
   const handleLoginClose = () => {
     setLoginOpen(false);
+    console.log("login form closing")
   };
 
   const [createAccountOpen, setCreateAccountOpen] = React.useState(false);
 
   const handleCreateOpen = () => {
     setCreateAccountOpen(true);
+    console.log('create account form opening');
   };
   const handleCreateClose = () => {
     setCreateAccountOpen(false);
+    console.log('create account form Closing')
   };
 
   return (

@@ -81,38 +81,38 @@ const DialogContent = withStyles((theme) => ({
 
 
 const Nav = () => {
-  const {loginOpen, setLoginOpen, handleLoginOpen, handleLoginClose} = React.useContext(SharedContext);
+  const { loginOpen, setLoginOpen, handleCreateOpen, handleLoginOpen, handleLoginClose } = React.useContext(SharedContext);
   const classes = useStyles();
   const theme = useTheme();
   const mobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
     <div className={classes.root}>
-      <SharedContext.Provider value = {{loginOpen, setLoginOpen, handleLoginClose, handleLoginOpen}}>
-      <AppBar style={{ backgroundColor: "black" }} elevation={0} position="static">
-        <Toolbar>
-          <Typography variant="h3" className={classes.title} as={Link} to='/'>
-            {mobile ? <IconButton className={classes.button}><PetsIcon /> </IconButton> : <Button style={{ color: "white", fontFamily: "Nunito", fontSize: '1.5rem', fontWeight: 'bolder' }}>fur-ever Home <PetsIcon style={{ fontSize: '1.5rem', margin: '0.5vw' }} /></Button>}
-          </Typography>
-          {mobile ? <IconButton className={classes.button}><SearchIcon /> </IconButton> : <Button className={classes.button} color="inherit">Search fur family</Button>}
-          {mobile ? <IconButton className={classes.button}><FavoriteBorderIcon /> </IconButton> : <Button className={classes.button} color="inherit">Who's ready?</Button>}
-          {mobile ? <IconButton className={classes.button} onClick={handleLoginOpen}><LockOpenIcon /> </IconButton> : <Button className={classes.button} color="inherit" onClick={handleLoginOpen}>log in</Button>}
-          <Dialog
-            onClose={handleLoginClose}
-            aria-labelledby="customized-dialog-title"
-            open={loginOpen}
-            maxWidth="xs"
-            fullScreen={mobile}
-          >
-            <DialogTitle id="customized-dialog-title" onClose={handleLoginClose}>
-              Log in
-            </DialogTitle>
-            <DialogContent dividers>
-              <Login />
-            </DialogContent>
-          </Dialog>
-        </Toolbar>
-      </AppBar>
+      <SharedContext.Provider value={{ loginOpen, handleCreateOpen, setLoginOpen, handleLoginClose, handleLoginOpen }}>
+        <AppBar style={{ backgroundColor: "black" }} elevation={0} position="static">
+          <Toolbar>
+            <Typography variant="h3" className={classes.title} as={Link} to='/'>
+              {mobile ? <IconButton className={classes.button}><PetsIcon /> </IconButton> : <Button style={{ color: "white", fontFamily: "Nunito", fontSize: '1.5rem', fontWeight: 'bolder' }}>fur-ever Home <PetsIcon style={{ fontSize: '1.5rem', margin: '0.5vw' }} /></Button>}
+            </Typography>
+            {mobile ? <IconButton className={classes.button}><SearchIcon /> </IconButton> : <Button className={classes.button} color="inherit">Search fur family</Button>}
+            {mobile ? <IconButton className={classes.button}><FavoriteBorderIcon /> </IconButton> : <Button className={classes.button} color="inherit">Who's ready?</Button>}
+            {mobile ? <IconButton className={classes.button} onClick={handleLoginOpen}><LockOpenIcon /> </IconButton> : <Button className={classes.button} color="inherit" onClick={handleLoginOpen}>log in</Button>}
+            <Dialog
+              onClose={handleLoginClose}
+              aria-labelledby="customized-dialog-title"
+              open={loginOpen}
+              maxWidth="xs"
+              fullScreen={mobile}
+            >
+              <DialogTitle id="customized-dialog-title" onClose={handleLoginClose}>
+                Log in
+              </DialogTitle>
+              <DialogContent dividers>
+                <Login />
+              </DialogContent>
+            </Dialog>
+          </Toolbar>
+        </AppBar>
       </SharedContext.Provider>
     </div>
   );

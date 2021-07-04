@@ -98,12 +98,18 @@ const Login = () => {
               variant="contained"
               color="primary"
               className={classes.submit}
+              onClick={()=> console.log("login form submited")}
             >
               Sign In
             </Button>
             <Grid container>
               <Grid item>
-                <Link component="button" onClick={() => handleCreateOpen} onClick={() => handleLoginClose}variant="body2">
+                <Link component="button" 
+                onClick={() => {
+                  handleLoginClose();
+                  handleCreateOpen();
+                }}
+                variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
