@@ -4,7 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { withStyles } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Container from '@material-ui/core/Container';
-import wallpaper from "../components/images/wallpaper.jpeg";
+import wallpaper from "../components/images/wallpaper.jpg";
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
@@ -79,7 +79,7 @@ const Home = () => {
         <CssBaseline />
         <div className="homeContainer">
           <img src={wallpaper} alt="Wallpaper" className="homeImage" />
-          <Container style={{ position: 'realative' }} maxWidth="xl" className="homeText">
+          <Container style={{ position: 'absolute' }} maxWidth="xl" className="homeText">
             <h3 className="homeTextName">You know...</h3>
             <h3 className="homeTextTitle">Wagging tails will never disappoint</h3>
             <Button className={classes.button} onClick={handleCreateOpen}>Create Account</Button>
