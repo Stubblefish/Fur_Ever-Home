@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: 'black',
     borderStyle: 'soild',
     borderColor: 'black',
-    borderWidth: '1vw'
+    borderWidth: '1vw',
   },
 
   contactsText: {
@@ -40,6 +40,7 @@ const Footer = () => {
 
   return (
     <div className={classes.contactsContainer}>
+      <br />
       <Grid container spacing={0}>
         <Grid item xs={6} sm={3} align="center">
           <Button
@@ -91,10 +92,11 @@ const Footer = () => {
         </Grid>
       </Grid>
       <div className={classes.contactsText}>
-        © 2021 UCB BOOTCAMP.
+        Copyright © UCB Bootcamp Fur-Ever Home 2021
+        <br />
         All Rights Reserved.
       </div>
-      <br></br>
+      <br />
     </div>
   )
 }
