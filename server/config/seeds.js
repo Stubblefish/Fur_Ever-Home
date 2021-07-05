@@ -12,6 +12,7 @@ db.once("open", async () => {
     { name: "Husky" },
     { name: "Australian Shephard" },
     { name: "Greyhound" },
+    // Feel free to add or subtract breeds here
   ]);
 
   console.log("Breed seeded!");
@@ -23,10 +24,13 @@ db.once("open", async () => {
       name: "Sophie",
       description:
         "A Pit Bull with the most loving of personalities! She may be a tri-pod but that doesn't slow her down!",
-      image: "",
+      image: "Dog-1.jpg",
       cost: 200,
-      breed: breed[0]._id,
+      breed: breed[0]._id, //breed[0] refers to Pitbull above
       age: 9,
+    },
+    {
+      // More Pets here
     },
   ]);
 
@@ -35,13 +39,13 @@ db.once("open", async () => {
   await User.deleteMany();
 
   await User.create({
-      firstName: 'George',
-      lastName: 'Wise';
-      email: 'George@gmail.com',
-      password: 'Password',      
+    firstName: "George",
+    lastName: "Wise",
+    email: "George@gmail.com",
+    password: "Password",
   });
 
-  console.log('User seeded!')
+  console.log("User seeded!");
 
   process.exit();
 });
