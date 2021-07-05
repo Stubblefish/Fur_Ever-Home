@@ -19,7 +19,7 @@ const typeDefs = gql`
   type Adoption {
     _id: ID
     adoptDate: String
-    adoption: [Pets]
+    pets: [Pets]
   }
 
   type User {
