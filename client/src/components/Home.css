@@ -1,0 +1,35 @@
+.homeContainer {
+    position: relative;
+    height: 50vw;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.homeImage {
+  width: 100%; /* width of container */
+  height: 100%; /* height of container */
+  object-fit: cover;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+
+.homeText {
+    position: absolute;
+    text-align: center;
+    top: 63%;
+    left: 32%;
+    color: white;
+  }
+
+.homeTextName {
+    color: White;
+    font-size: 5.5vw;
+    margin: 0vw 3.5vw 0vw 0vw;
+  }
+
+.homeTextTitle {
+  color: White;
+  font-size: 2vw;
+  margin: 0.5vw;
+}

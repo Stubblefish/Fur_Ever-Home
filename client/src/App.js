@@ -1,23 +1,46 @@
-import logo from './logo.svg';
+import React from 'react';
+import { CssBaseline } from '@material-ui/core';
 import './App.css';
+import Nav from './components/Nav';
+import Home from './components/Home';
+import Footer from './components/Footer';
+import SharedContext from './components/SharedContext';
 
 function App() {
+
+  const [loginOpen, setLoginOpen] = React.useState(false);
+
+  const handleLoginOpen = () => {
+    setLoginOpen(true);
+    console.log("login form opening")
+  };
+  const handleLoginClose = () => {
+    setLoginOpen(false);
+    console.log("login form closing")
+  };
+
+  const [createAccountOpen, setCreateAccountOpen] = React.useState(false);
+
+  const handleCreateOpen = () => {
+    setCreateAccountOpen(true);
+    console.log('create account form opening');
+  };
+  const handleCreateClose = () => {
+    setCreateAccountOpen(false);
+    console.log('create account form Closing')
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <CssBaseline />
+      <SharedContext.Provider value={{
+        handleLoginClose, handleLoginOpen, loginOpen, setLoginOpen,
+        createAccountOpen, setCreateAccountOpen, handleCreateOpen, handleCreateClose
+      }}>
+        <Nav />
+        <Home />
+        <Footer />
+      </SharedContext.Provider>
     </div>
   );
 }
