@@ -14,7 +14,7 @@ const petsSchema = new Schema({
   image: {
     type: String,
   },
-  cost: {
+  price: {
     type: Number,
     required: true,
     min: 0.99,
