@@ -22,13 +22,15 @@ const resolvers = {
 
       return await Pet.find(params).populate("breed");
     },
+
     pets: async (parent, { _id }) => {
+
       return await Pet.findById(_id).populate("breed");
     },
     user: async (parent, args, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
-          path: "adopts.pets",
+          path: "adopts.pet",
           populate: "breed",
         });
 
@@ -53,16 +55,18 @@ const resolvers = {
     checkout: async (parent, args, context) => {
       const url = new URL(context.headers.referer).origin;
 
-      const order = new Order({ pets: args.pets });
-      const { pets } = await order.populate("pets").execPopulate();
+      const order = new Order({ pet: args.pet });
+      const { pet } = await order.populate("pet").execPopulate();
 
       const line_items = [];
+
 
       for (let i = 0; i < pets.length; i++) {
         const product = await stripe.pets.create({
           name: pets[i].name,
           description: pets[i].description,
           images: [`${url}/images/${pets[i].image}`],
+
         });
         const price = await stripe.prices.create({
           pet: pet.id,
@@ -92,10 +96,12 @@ const resolvers = {
 
       return { token, user };
     },
-    addAdoption: async (parent, { pets }, context) => {
+    addAdoption: async (parent, { pet }, context) => {
       console.log(context);
       if (context.user) {
+
         const adopt = new Adoption({ pets });
+
         await User.findByIdAndUpdate(context.user._id, {
           $push: { adopt: adopt },
         });

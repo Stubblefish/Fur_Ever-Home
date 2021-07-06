@@ -19,7 +19,9 @@ const typeDefs = gql`
   type Adoption {
     _id: ID
     adoptDate: String
+
     pets: [Pet]
+
   }
 
   type User {
@@ -36,12 +38,14 @@ const typeDefs = gql`
   }
 
   type Query {
+
     breeds: [Breed]
     pets(breed: ID, name: String): [Pet]
     pet(_id: ID!): Pet
     user: User
     adoption(_id: ID!): Adoption
     checkout(pets: [ID]!): Checkout
+
   }
 
   type Mutation {
@@ -51,14 +55,16 @@ const typeDefs = gql`
       email: String!
       password: String!
     ): Auth
-    addAdoption(pets: [ID]!): Adoption
+    addAdoption(pet: [ID]!): Adoption
     updateUser(
       firstName: String
       lastName: String
       email: String
       password: String
     ): User
+
     updatePet(_id: ID!) Pet
+
     login(email: String!, password: String!): Auth
   }
 
