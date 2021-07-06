@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const { Schema } = mongoose;
 const bcrypt = require("bcrypt");
-const Adopt = require("./Adopt");
+const Adopt = require("./Adoption");
 
 const userSchema = new Schema({
   firstName: {

@@ -6,7 +6,7 @@ const typeDefs = gql`
     name: String
   }
 
-  type Pets {
+  type Pet {
     _id: ID
     name: String
     description: String
@@ -19,7 +19,7 @@ const typeDefs = gql`
   type Adoption {
     _id: ID
     adoptDate: String
-    pets: [Pets]
+    pet: [Pet]
   }
 
   type User {
@@ -35,11 +35,11 @@ const typeDefs = gql`
   }
   type Query {
     breed: [Breed]
-    pets(breed: ID, name: String): [Pets]
-    pets(_id: ID!): Pets
+    pet(breed: ID, name: String): [Pet]
+    pet(_id: ID!): Pet
     user: User
     adoption(_id: ID!): Adoption
-    checkout(pets: [ID]!): Checkout
+    checkout(pet: [ID]!): Checkout
     # Think query might be wrong / missing things
   }
   type Mutation {
@@ -49,14 +49,14 @@ const typeDefs = gql`
       email: String!
       password: String!
     ): Auth
-    addAdoption(pets: [ID]!): Adoption
+    addAdoption(pet: [ID]!): Adoption
     updateUser(
       firstName: String
       lastName: String
       email: String
       password: String
     ): User
-    updatePets(_id: ID!, quantity: Int!): Pets
+    updatePet(_id: ID!, quantity: Int!): Pet
     login(email: String!, password: String!): Auth
     # Think my mutation needs work, not sure
   }

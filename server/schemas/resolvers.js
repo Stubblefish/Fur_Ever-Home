@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User, Pets, Breed, Adoption } = require("../models");
+const { User, Pet, Breed, Adoption } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -7,7 +7,7 @@ const resolvers = {
     breeds: async () => {
       return await Breed.find();
     },
-    pets: async (parent, { breed, name }) => {
+    pet: async (parent, { breed, name }) => {
       const params = {};
 
       if (breed) {
@@ -20,15 +20,15 @@ const resolvers = {
         };
       }
 
-      return await Pets.find(params).populate("breed");
+      return await Pet.find(params).populate("breed");
     },
-    pets: async (parent, { _id }) => {
-      return await Pets.findById(_id).populate("breed");
+    pet: async (parent, { _id }) => {
+      return await Pet.findById(_id).populate("breed");
     },
     user: async (parent, args, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
-          path: "adopts.pets",
+          path: "adopts.pet",
           populate: "breed",
         });
 
@@ -41,22 +41,22 @@ const resolvers = {
     checkout: async (parent, args, context) => {
       const url = new URL(context.headers.referer).origin;
 
-      const order = new Order({ pets: args.pets });
-      const { pets } = await order.populate("pets").execPopulate();
+      const order = new Order({ pet: args.pet });
+      const { pet } = await order.populate("pet").execPopulate();
 
       const line_items = [];
 
-      for (let i = 0; i < pets.length; i++) {
+      for (let i = 0; i < pet.length; i++) {
         // generate product id
-        const product = await stripe.pets.create({
-          name: pets[i].name,
-          description: pets[i].description,
-          images: [`${url}/images/${pets[i].image}`],
+        const product = await stripe.pet.create({
+          name: pet[i].name,
+          description: pet[i].description,
+          images: [`${url}/images/${pet[i].image}`],
         });
         // generate price id using the procuct id
         const price = await stripe.prices.create({
-          pet: pets.id,
-          unit_amount: pets[i].price * 100,
+          pet: pet.id,
+          unit_amount: pet[i].price * 100,
           currency: "usd",
         });
         // add price id to the line items array
@@ -83,10 +83,10 @@ const resolvers = {
 
       return { token, user };
     },
-    addAdoption: async (parent, { pets }, context) => {
+    addAdoption: async (parent, { pet }, context) => {
       console.log(context);
       if (context.user) {
-        const adopt = new Adoption({ Pets });
+        const adopt = new Adoption({ Pet });
         await User.findByIdAndUpdate(context.user._id, {
           $push: { adopt: adopt },
         });
