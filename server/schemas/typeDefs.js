@@ -12,8 +12,8 @@ const typeDefs = gql`
     description: String
     image: String
     price: Float
-    breed: [Breed]
     age: Int
+    breed: Breed
   }
 
   type Adoption {
@@ -37,7 +37,6 @@ const typeDefs = gql`
   }
 
   type Query {
-
     breeds: [Breed]
     pets(breed: ID, name: String): [Pet]
     pet(_id: ID!): Pet
@@ -61,11 +60,9 @@ const typeDefs = gql`
       email: String
       password: String
     ): User
-    updatePet(_id: ID!): Pet
-
+    updatePet(_id: ID!, age: Int!): Pet
     login(email: String!, password: String!): Auth
   }
-
   type Checkout {
     session: ID
   }

@@ -1,5 +1,5 @@
 const express = require("express");
-const { ApolloServer, gql } = require("apollo-server-express");
+const { ApolloServer } = require("apollo-server-express");
 const path = require("path");
 
 const { typeDefs, resolvers } = require("./schemas");
@@ -12,4 +12,23 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   context: authMiddleware,
+});
+
+server.applyMiddleware({ app });
+
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
+// Serve up static assets
+
+app.use(
+  "/images",
+  express.static(path.join(__dirname, "../client/public/images"))
+);
+
+db.once("open", () => {
+  app.listen(PORT, () => {
+    console.log(`API server running on port ${PORT}!`);
+    console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
+  });
 });

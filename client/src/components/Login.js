@@ -142,7 +142,7 @@ const Login = (props) => {
             </Grid>
             {error ? (
               <div>
-                <p className="error-text">The provided credentials are incorrect</p>
+                <p style={{ color: 'red' }}>Please Provide Vaild Information</p>
               </div>
             ) : null}
           </form>

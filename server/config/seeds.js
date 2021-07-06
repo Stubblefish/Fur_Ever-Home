@@ -20,19 +20,16 @@ db.once("open", async () => {
   await Pet.deleteMany();
 
 
-  const pet = await Pet.insertMany([
+  const pets = await Pet.insertMany([
 
     {
       name: "Sophie",
       description:
         "A Pit Bull with the most loving of personalities! She may be a tri-pod but that doesn't slow her down!",
+      breed: breeds[0]._id, //breed[0] refers to Pitbull
       image: "Dog-1.jpg",
-      cost: 200,
-      breed: breed[0]._id, //breed[0] refers to Pitbull
+      price: 200,
       age: 9,
-    },
-    {
-      // More Pets here
     },
   ]);
 
@@ -45,6 +42,9 @@ db.once("open", async () => {
     lastName: "Wise",
     email: "George@gmail.com",
     password: "Password",
+    breeds: [
+      { pets: [pets[0]._id] }
+    ]
   });
 
   console.log("User seeded!");
