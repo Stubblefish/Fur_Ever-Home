@@ -2,7 +2,8 @@ const mongoose = require("mongoose");
 
 const { Schema } = mongoose;
 const bcrypt = require("bcrypt");
-const Adopt = require("./Adoption");
+
+const Adoption = require("./Adoption");
 
 const userSchema = new Schema({
   firstName: {
@@ -25,7 +26,7 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  Adoption: [Adopt.schema],
+  Adoption: [Adoption.schema],
 });
 
 // set up pre-save middleware to create password

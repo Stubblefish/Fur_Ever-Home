@@ -12,8 +12,8 @@ mutation login($email: String!, $password: String!) {
 `;
 
 export const ADD_ADOPTION = gql`
-  mutation addAdoption(pets: [ID]!) {
-    addAdoption(pets:$pets) {
+  mutation addAdoption($pets: [ID]!) {
+    addAdopt(pets: $pets) {
       adoptDate
       pets {
         _id
