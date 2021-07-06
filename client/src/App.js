@@ -1,24 +1,30 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { CssBaseline } from '@material-ui/core';
-import { ApolloProvider } from '@apollo/react-hooks';
-import ApolloClient from 'apollo-boost';
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
 import Nav from './components/Nav';
 import Home from './components/Home';
 import Footer from './components/Footer';
 import SharedContext from './components/SharedContext';
 
-const client = new ApolloClient({
-  request: operation => {
-    const token = localStorage.getItem('id_token');
+const httpLink = createHttpLink({
+  uri: 'http://localhost:3001/graphql',
+});
 
-    operation.setContext({
-      headers: {
-        authorization: token ? `Bearer ${token}` : ''
-      }
-    });
-  },
-  uri: '/graphql',
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('id_token');
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
 });
 
 function App() {
@@ -51,7 +57,9 @@ function App() {
             createAccountOpen, setCreateAccountOpen, handleCreateOpen, handleCreateClose
           }}>
             <Nav />
-            <Home />
+            <Switch>
+              <Route exact path="/" component={Home} />
+            </Switch>
             <Footer />
           </SharedContext.Provider>
         </div>

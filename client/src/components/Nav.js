@@ -19,6 +19,7 @@ import MuiDialogTitle from '@material-ui/core/DialogTitle';
 import MuiDialogContent from '@material-ui/core/DialogContent';
 import Login from '../components/Login';
 import SharedContext from './SharedContext';
+import Auth from '../utils/auth';
 
 
 
@@ -85,6 +86,7 @@ const Nav = () => {
   const classes = useStyles();
   const theme = useTheme();
   const mobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const loggedIn = Auth.loggedIn();
 
   return (
     <div className={classes.root}>
@@ -96,25 +98,37 @@ const Nav = () => {
             </Typography>
             {mobile ? <IconButton className={classes.button}><SearchIcon /> </IconButton> : <Button className={classes.button} color="inherit">Search fur family</Button>}
             {mobile ? <IconButton className={classes.button}><FavoriteBorderIcon /> </IconButton> : <Button className={classes.button} color="inherit">Who's ready?</Button>}
-            {mobile ? <IconButton className={classes.button} onClick={handleLoginOpen}><LockOpenIcon /> </IconButton> : <Button className={classes.button} color="inherit" onClick={handleLoginOpen}>log in</Button>}
-            <Dialog
-              onClose={handleLoginClose}
-              aria-labelledby="customized-dialog-title"
-              open={loginOpen}
-              maxWidth="xs"
-              fullScreen={mobile}
-            >
-              <DialogTitle id="customized-dialog-title" onClose={handleLoginClose}>
-                Log in
-              </DialogTitle>
-              <DialogContent dividers>
-                <Login />
-              </DialogContent>
-            </Dialog>
+            
+            
+            {loggedIn 
+              ? mobile 
+                ? <IconButton className = {classes.button} onClick={Auth.logout}> <LockOpenIcon /> </IconButton> 
+                : <Button className={classes.button} color="inherit" onClick={Auth.logout}>log out</Button>
+              : mobile 
+                ? <IconButton className={classes.button} onClick={handleLoginOpen}><LockOpenIcon /> </IconButton> 
+              : <Button className={classes.button} color="inherit" onClick={handleLoginOpen}>log in</Button>
+            }
+
+
+          <Dialog
+            onClose={handleLoginClose}
+            aria-labelledby="customized-dialog-title"
+            open={loginOpen}
+            maxWidth="xs"
+            fullScreen={mobile}
+          >
+            <DialogTitle id="customized-dialog-title" onClose={handleLoginClose}>
+              Log in
+            </DialogTitle>
+            <DialogContent dividers>
+              <Login />
+            </DialogContent>
+          </Dialog>
+
           </Toolbar>
         </AppBar>
       </SharedContext.Provider>
-    </div>
+    </div >
   );
 }
 
