@@ -22,7 +22,9 @@ const resolvers = {
 
       return await Pet.find(params).populate("breed");
     },
-    pet: async (parent, { _id }) => {
+
+    pets: async (parent, { _id }) => {
+
       return await Pet.findById(_id).populate("breed");
     },
     user: async (parent, args, context) => {
@@ -37,6 +39,18 @@ const resolvers = {
 
       throw new AuthenticationError("Not logged in");
     },
+    order: async (parent, { _id }, context) => {
+      if (context.user) {
+        const user = await User.findById(context.user._id).populate({
+          path: 'orders.pets',
+          populate: 'breed'
+        });
+
+        return user.orders.id(_id);
+      }
+
+      throw new AuthenticationError('Not logged in');
+    },
     // checkout for stripe courtesy of npokamestov from git
     checkout: async (parent, args, context) => {
       const url = new URL(context.headers.referer).origin;
@@ -46,20 +60,19 @@ const resolvers = {
 
       const line_items = [];
 
-      for (let i = 0; i < pet.length; i++) {
-        // generate product id
-        const product = await stripe.pet.create({
-          name: pet[i].name,
-          description: pet[i].description,
-          images: [`${url}/images/${pet[i].image}`],
+
+      for (let i = 0; i < pets.length; i++) {
+        const product = await stripe.pets.create({
+          name: pets[i].name,
+          description: pets[i].description,
+          images: [`${url}/images/${pets[i].image}`],
+
         });
-        // generate price id using the procuct id
         const price = await stripe.prices.create({
           pet: pet.id,
           unit_amount: pet[i].price * 100,
           currency: "usd",
         });
-        // add price id to the line items array
         line_items.push({
           price: price.id,
           quantity: 1,
@@ -86,7 +99,9 @@ const resolvers = {
     addAdoption: async (parent, { pet }, context) => {
       console.log(context);
       if (context.user) {
-        const adopt = new Adoption({ Pet });
+
+        const adopt = new Adoption({ pets });
+
         await User.findByIdAndUpdate(context.user._id, {
           $push: { adopt: adopt },
         });

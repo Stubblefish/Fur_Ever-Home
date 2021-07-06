@@ -19,7 +19,9 @@ db.once("open", async () => {
 
   await Pet.deleteMany();
 
+
   const pet = await Pet.insertMany([
+
     {
       name: "Sophie",
       description:

@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
+import { useMutation } from '@apollo/client';
+import Auth from '../utils/auth';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -11,6 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import SharedContext from './SharedContext';
+import {ADD_USER} from '../utils/mutations';
 
 function Copyright() {
   return (
@@ -52,9 +55,34 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const CreateAccount = () => {
+const CreateAccount = (props) => {
   const classes = useStyles();
   const { loginOpen, setLoginOpen, handleLoginOpen, handleCreateClose } = React.useContext(SharedContext);
+  const [formState, setFormState] = useState({ email: '', password: '' });
+  const [addUser] = useMutation(ADD_USER);
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    const mutationResponse = await addUser({
+      variables: {
+        email: formState.email,
+        password: formState.password,
+        firstName: formState.firstName,
+        lastName: formState.lastName,
+      },
+    });
+    const token = mutationResponse.data.addUser.token;
+    Auth.login(token);
+  };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+
   return (
     <Container component="main" maxWidth="sm">
       <SharedContext.Provider value={{ loginOpen, setLoginOpen, handleCreateClose, handleLoginOpen }}>
@@ -66,7 +94,7 @@ const CreateAccount = () => {
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
-          <form className={classes.form} noValidate>
+          <form className={classes.form} noValidate onSubmit={handleFormSubmit}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
@@ -77,6 +105,7 @@ const CreateAccount = () => {
                   id="firstName"
                   label="First Name"
                   autoFocus
+                  onChange={handleChange}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -87,6 +116,7 @@ const CreateAccount = () => {
                   id="lastName"
                   label="Last Name"
                   name="lastName"
+                  onChange={handleChange}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -98,6 +128,7 @@ const CreateAccount = () => {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  onChange={handleChange}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -110,6 +141,7 @@ const CreateAccount = () => {
                   type="password"
                   id="password"
                   autoComplete="current-password"
+                  onChange={handleChange}
                 />
               </Grid>
             </Grid>
