@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useMutation } from '@apollo/client';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -11,6 +12,8 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import SharedContext from './SharedContext';
+import { LOGIN } from '../utils/mutations';
+import Auth from '../utils/auth';
 
 
 function Copyright() {
@@ -45,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
     height: theme.spacing(4),
   },
   form: {
-    width: '100%', 
+    width: '100%',
     marginTop: theme.spacing(4),
   },
   submit: {
@@ -53,9 +56,32 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Login = () => {
+const Login = (props) => {
   const classes = useStyles();
   const { createAccountOpen, setCreateAccountOpen, handleCreateOpen, handleLoginClose } = React.useContext(SharedContext);
+  const [formState, setFormState] = useState({ email: '', password: '' });
+  const [login, { error }] = useMutation(LOGIN);
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const mutationResponse = await login({
+        variables: { email: formState.email, password: formState.password },
+      });
+      const token = mutationResponse.data.login.token;
+      Auth.login(token);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
 
   return (
     <Container component="main" maxWidth="sm">
@@ -68,7 +94,7 @@ const Login = () => {
           <Typography component="h1" variant="h5">
             Log in
           </Typography>
-          <form className={classes.form} noValidate>
+          <form className={classes.form} noValidate onSubmit={handleFormSubmit}>
             <TextField
               variant="outlined"
               margin="normal"
@@ -79,6 +105,7 @@ const Login = () => {
               name="email"
               autoFocus
               autoComplete="email"
+              onChange={handleChange}
             />
             <TextField
               variant="outlined"
@@ -90,6 +117,7 @@ const Login = () => {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={handleChange}
             />
             <Button
               type="submit"
@@ -97,22 +125,26 @@ const Login = () => {
               variant="contained"
               color="primary"
               className={classes.submit}
-              onClick={()=> console.log("login form submited")}
             >
               Sign In
             </Button>
             <Grid container>
               <Grid item>
-                <Link component="button" 
-                onClick={() => {
-                  handleLoginClose();
-                  handleCreateOpen();
-                }}
-                variant="body2">
+                <Link component="button"
+                  onClick={() => {
+                    handleLoginClose();
+                    handleCreateOpen();
+                  }}
+                  variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
             </Grid>
+            {error ? (
+              <div>
+                <p className="error-text">The provided credentials are incorrect</p>
+              </div>
+            ) : null}
           </form>
         </div>
         <Box mt={8}>
