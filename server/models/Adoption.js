@@ -10,7 +10,7 @@ const adoptSchema = new Schema({
   pets: [
     {
       type: Schema.Types.ObjectId,
-      ref: "Pets",
+      ref: "Pet",
     },
   ],
 });
