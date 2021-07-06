@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { CssBaseline } from '@material-ui/core';
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
@@ -27,22 +27,18 @@ function App() {
 
   const handleLoginOpen = () => {
     setLoginOpen(true);
-    console.log("login form opening")
   };
   const handleLoginClose = () => {
     setLoginOpen(false);
-    console.log("login form closing")
   };
 
   const [createAccountOpen, setCreateAccountOpen] = React.useState(false);
 
   const handleCreateOpen = () => {
     setCreateAccountOpen(true);
-    console.log('create account form closing');
   };
   const handleCreateClose = () => {
     setCreateAccountOpen(false);
-    console.log('create account form open')
   };
 
   return (

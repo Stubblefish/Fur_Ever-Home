@@ -40,7 +40,6 @@ const typeDefs = gql`
     user: User
     adoption(_id: ID!): Adoption
     checkout(pets: [ID]!): Checkout
-    # Think query might be wrong / missing things
   }
   type Mutation {
     addUser(
