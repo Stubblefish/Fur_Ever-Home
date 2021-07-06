@@ -6,6 +6,7 @@ import { setContext } from '@apollo/client/link/context';
 import Nav from './components/Nav';
 import Home from './components/Home';
 import Footer from './components/Footer';
+import PetList from './components/PetList';
 import SharedContext from './components/SharedContext';
 
 const httpLink = createHttpLink({
@@ -59,6 +60,7 @@ function App() {
             <Nav />
             <Switch>
               <Route exact path="/" component={Home} />
+              <Route exact path="/petlist" component={PetList} />
             </Switch>
             <Footer />
           </SharedContext.Provider>

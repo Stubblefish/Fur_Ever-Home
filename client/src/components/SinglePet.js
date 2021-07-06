@@ -41,14 +41,12 @@ function SinglePet(info) {
   const {
     image,
     name,
-    _id,
     price,
     description,
     breed,
     age
   } = info;
 
-  const classes = useStyles();
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
