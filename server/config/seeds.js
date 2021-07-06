@@ -1,5 +1,5 @@
 const db = require("./connection");
-const { User, Breed, Pets } = require("../models");
+const { User, Breed, Pet } = require("../models");
 
 db.once("open", async () => {
   await Breed.deleteMany();
@@ -17,9 +17,9 @@ db.once("open", async () => {
 
   console.log("Breed seeded!");
 
-  await Pets.deleteMany();
+  await Pet.deleteMany();
 
-  const pets = await Pets.insertMany([
+  const pets = await Pet.insertMany([
     {
       name: "Sophie",
       description:
