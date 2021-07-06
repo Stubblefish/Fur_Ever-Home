@@ -19,7 +19,6 @@ const typeDefs = gql`
   type Adoption {
     _id: ID
     adoptDate: String
-
     pets: [Pet]
 
   }
@@ -62,8 +61,7 @@ const typeDefs = gql`
       email: String
       password: String
     ): User
-
-    updatePet(_id: ID!) Pet
+    updatePet(_id: ID!): Pet
 
     login(email: String!, password: String!): Auth
   }
