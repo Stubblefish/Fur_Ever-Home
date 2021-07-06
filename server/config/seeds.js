@@ -1,5 +1,5 @@
 const db = require("./connection");
-const { User, Breed, Pets } = require("../models");
+const { User, Breed, Pet } = require("../models");
 
 db.once("open", async () => {
   await Breed.deleteMany();
@@ -17,16 +17,16 @@ db.once("open", async () => {
 
   console.log("Breed seeded!");
 
-  await Pets.deleteMany();
+  await Pet.deleteMany();
 
-  const pets = await Pets.insertMany([
+  const pet = await Pet.insertMany([
     {
       name: "Sophie",
       description:
         "A Pit Bull with the most loving of personalities! She may be a tri-pod but that doesn't slow her down!",
       image: "Dog-1.jpg",
       cost: 200,
-      breed: breed[0]._id, //breed[0] refers to Pitbull above
+      breed: breed[0]._id, //breed[0] refers to Pitbull
       age: 9,
     },
     {
@@ -34,7 +34,7 @@ db.once("open", async () => {
     },
   ]);
 
-  console.log("Pets seeded!");
+  console.log("Pet seeded!");
 
   await User.deleteMany();
 
