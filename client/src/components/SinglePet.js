@@ -14,12 +14,16 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: "18rem",
-    margin: "0.5vw",
+
+    width: '20rem',
+    margin: '0.5vw'
   },
   media: {
-    height: 0,
-    paddingTop: "56.25%", // 16:9
+    height: '18rem',
+    width: '100%',
+    objectFit: 'contain',
+    paddingTop: '56.25%', // 16:9
+
   },
   expand: {
     transform: "rotate(0deg)",
@@ -50,7 +54,9 @@ function SinglePet(info) {
       <CardMedia className={classes.media} image={image} title={name} />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
+
           Age: {price}
+
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
@@ -70,8 +76,15 @@ function SinglePet(info) {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography paragraph>My name is {name}:</Typography>
-          <Typography paragraph>{description}</Typography>
+
+          <Typography paragraph>Hi my name is {name}:</Typography>
+          <Typography paragraph>
+            {description}
+          </Typography>
+          <Typography style={{fontSize: '0.7vw'}}>
+            You know... Wagging tails never disappoint
+          </Typography>
+
         </CardContent>
       </Collapse>
     </Card>

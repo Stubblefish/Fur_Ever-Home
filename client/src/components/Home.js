@@ -12,10 +12,12 @@ import MuiDialogContent from '@material-ui/core/DialogContent';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import { useTheme } from '@material-ui/core/styles';
+import { Link } from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
 import CreateAccount from '../components/CreateAccount';
 import './Home.css';
 import SharedContext from "./SharedContext";
+import Auth from '../utils/auth';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -72,6 +74,7 @@ const Home = () => {
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
   const { createAccountOpen, setCreateAccountOpen, handleLoginOpen, handleCreateOpen, handleCreateClose } = React.useContext(SharedContext);
+  const loggedIn = Auth.loggedIn();
 
   return (
     <React.Fragment>
@@ -82,7 +85,10 @@ const Home = () => {
           <Container style={{ position: 'absolute' }} maxWidth="xl" className="homeText">
             <h3 className="homeTextName">You know...</h3>
             <h3 className="homeTextTitle">Wagging tails will never disappoint</h3>
-            <Button className={classes.button} onClick={handleCreateOpen}>Create Account</Button>
+            {loggedIn
+              ? <Link to="petlist"><Button className={classes.button}>Find Fur fmaily</Button></Link>
+              : <Button className={classes.button} onClick={handleCreateOpen}>Create Account</Button>
+            }
           </Container>
           <Dialog
             onClose={handleCreateClose}
