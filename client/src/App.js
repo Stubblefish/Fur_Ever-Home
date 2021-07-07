@@ -7,7 +7,6 @@ import Nav from './components/Nav';
 import Home from './components/Home';
 import Footer from './components/Footer';
 import PetList from './components/PetList';
-import Save from './components/Save';
 import SharedContext from './components/SharedContext';
 
 const httpLink = createHttpLink({
@@ -62,7 +61,6 @@ function App() {
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/petlist" component={PetList} />
-              <Route exact path="/save" component={Save} />
             </Switch>
             <Footer />
           </SharedContext.Provider>

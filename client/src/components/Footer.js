@@ -42,7 +42,7 @@ const Footer = () => {
     <div className={classes.contactsContainer}>
       <br />
       <Grid container spacing={0}>
-        <Grid item xs={6} sm={3} align="center">
+        <Grid item xs={6} sm={4} align="center">
           <Button
             className={classes.button}
             color="inherit"
@@ -54,7 +54,7 @@ const Footer = () => {
             RICHARD KIM
           </Button>
         </Grid>
-        <Grid item xs={6} sm={3} align="center">
+        <Grid item xs={6} sm={4} align="center">
           <Button
             className={classes.button}
             color="inherit"
@@ -63,10 +63,10 @@ const Footer = () => {
             onClick={() => window.open('https://github.com/nmchristianson')}
             size="large"
           >
-            NICOLE CHRISTIANSON
+            NICHOLE CHRISTIANSON
           </Button>
         </Grid>
-        <Grid item xs={6} sm={3} align="center">
+        <Grid item xs={6} sm={4} align="center">
           <Button
             className={classes.button}
             color="inherit"
@@ -76,18 +76,6 @@ const Footer = () => {
             size="large"
           >
             GEORGE WISE
-          </Button>
-        </Grid>
-        <Grid item xs={6} sm={3} align="center">
-          <Button
-            className={classes.button}
-            color="inherit"
-            startIcon={<GitHubIcon />}
-            style={{ color: "white", textTransform: "none" }}
-            onClick={() => window.open('https://github.com/')}
-            size="large"
-          >
-            ANTHONY HALL
           </Button>
         </Grid>
       </Grid>
