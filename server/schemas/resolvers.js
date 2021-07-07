@@ -25,29 +25,28 @@ const resolvers = {
     },
 
     pets: async (parent, { _id }) => {
-      console.log("pets ran");
       return await Pet.findById(_id).populate("breed");
     },
     user: async (parent, args, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
-          path: "adopts.pet",
+          path: "adopts.pets",
           populate: "breed",
         });
 
-        return user.adopts.id(_id);
+        return user;
       }
 
       throw new AuthenticationError("Not logged in");
     },
-    Adoption: async (parent, { _id }, context) => {
+    adoption: async (parent, { _id }, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
-          path: "adoption.pets",
+          path: "adoptions.pets",
           populate: "breed",
         });
 
-        return user.adoption.id(_id);
+        return user.adoptions.id(_id);
       }
 
       throw new AuthenticationError("Not logged in");
@@ -55,21 +54,19 @@ const resolvers = {
     // checkout for stripe courtesy of npokamestov from git
     checkout: async (parent, args, context) => {
       const url = new URL(context.headers.referer).origin;
-
       const order = new Order({ pet: args.pet });
       const { pet } = await order.populate("pet").execPopulate();
-
       const line_items = [];
 
       for (let i = 0; i < pets.length; i++) {
-        const product = await stripe.pets.create({
+        const pet = await stripe.pets.create({
           name: pets[i].name,
           description: pets[i].description,
           images: [`${url}/images/${pets[i].image}`],
         });
         const price = await stripe.prices.create({
           pet: pet.id,
-          unit_amount: pet[i].price * 100,
+          unit_amount: pets[i].price * 100,
           currency: "usd",
         });
         line_items.push({

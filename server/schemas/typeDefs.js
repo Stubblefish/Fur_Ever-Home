@@ -47,11 +47,10 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    addUser(
-      firstName: String!
-      lastName: String!
-      email: String!
-      password: String!
+    addUser(firstName: String!, 
+    lastName: String!, 
+    email: String!, 
+    password: String!
     ): Auth
     addAdoption(pet: [ID]!): Adoption
     updateUser(
