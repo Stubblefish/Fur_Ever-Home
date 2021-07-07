@@ -29,7 +29,7 @@ export const QUERY_ALL_PETS = gql`
 }
 `;
 
-export const QUERY_BREED = gql`
+export const QUERY_BREEDS = gql`
   {
     breeds {
       _id
