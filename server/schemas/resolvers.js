@@ -40,14 +40,14 @@ const resolvers = {
 
       throw new AuthenticationError("Not logged in");
     },
-    order: async (parent, { _id }, context) => {
+    Adoption: async (parent, { _id }, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
-          path: "orders.pets",
+          path: "adoption.pets",
           populate: "breed",
         });
 
-        return user.orders.id(_id);
+        return user.adoption.id(_id);
       }
 
       throw new AuthenticationError("Not logged in");
