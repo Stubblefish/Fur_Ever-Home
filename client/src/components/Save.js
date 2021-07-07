@@ -7,7 +7,7 @@ const Save = () => {
   return (
     <React.Fragment>
     <CssBaseline />
-    <Container relative maxWidth='xl' style={{ backgroundColor: "whitesmoke" }}>
+    <Container fixed maxWidth='xl' style={{ backgroundColor: "whitesmoke", height:'60vw' }}>
       <Typography component='div' style={{ fontWeight: "bold", backgroundColor: "whitesmoke" }}>I'm ready</Typography>
       {/* { ? (
         <Grid container spacing={1} style={{ display: "flex", justifyContent: "flex-start", alignItems: 'center' }}>

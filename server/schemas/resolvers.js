@@ -31,7 +31,7 @@ const resolvers = {
     user: async (parent, args, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
-          path: "adopts.pets",
+          path: "adoptions.pets",
           populate: "breed",
         });
 
@@ -96,10 +96,10 @@ const resolvers = {
     addAdoption: async (parent, { pet }, context) => {
       console.log(context);
       if (context.user) {
-        const adopt = new Adoption({ pets });
+        const adoption = new Adoption({ pets });
 
         await User.findByIdAndUpdate(context.user._id, {
-          $push: { adopt: adopt },
+          $push: { adoptions: adoption },
         });
         return adoption;
       }

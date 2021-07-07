@@ -31,7 +31,7 @@ function PetList() {
   return (
     <React.Fragment>
       <CssBaseline />
-      <Container relative maxWidth='xl' style={{ backgroundColor: "whitesmoke" }}>
+      <Container maxWidth='xl' style={{ backgroundColor: "whitesmoke" }}>
         <BreedMenu setBreed={setBreed} />
         <Typography component='div' style={{ fontWeight: "bold", backgroundColor: "whitesmoke" }}>Standing By:</Typography>
         {pets.length ? (
