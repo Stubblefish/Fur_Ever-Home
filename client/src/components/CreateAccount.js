@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 import Avatar from '@material-ui/core/Avatar';
@@ -13,7 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import SharedContext from './SharedContext';
-import {ADD_USER} from '../utils/mutations';
+import { ADD_USER } from '../utils/mutations';
 
 function Copyright() {
   return (
@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
     height: theme.spacing(4),
   },
   form: {
-    width: '100%', 
+    width: '100%',
     marginTop: theme.spacing(3),
   },
   submit: {
@@ -71,6 +71,7 @@ const CreateAccount = (props) => {
         lastName: formState.lastName,
       },
     });
+    console.log(mutationResponse);
     const token = mutationResponse.data.addUser.token;
     Auth.login(token);
   };
