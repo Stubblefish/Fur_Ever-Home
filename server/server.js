@@ -14,10 +14,12 @@ const server = new ApolloServer({
   context: authMiddleware,
 });
 
-server.applyMiddleware({ app });
-
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
+server.applyMiddleware({ app });
+
+
 
 // Serve up static assets
 
