@@ -4,11 +4,10 @@ import Container from '@material-ui/core/Container';
 import wallpaperTwo from "../components/images/wallpaper2.jpg";
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
-import { useTheme } from '@material-ui/core/styles';
 import { makeStyles } from "@material-ui/core/styles";
 import './Reject.css';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     flexGrow: 1,
   },
@@ -27,7 +26,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Reject = () => {
   const classes = useStyles();
-  const theme = useTheme();
 
   return (
     <React.Fragment>
