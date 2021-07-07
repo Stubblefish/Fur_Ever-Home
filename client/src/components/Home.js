@@ -86,7 +86,7 @@ const Home = () => {
             <h3 className="homeTextName">You know...</h3>
             <h3 className="homeTextTitle">Wagging tails will never disappoint</h3>
             {loggedIn
-              ? <Link to="petlist"><Button className={classes.button}>Find Fur fmaily</Button></Link>
+              ? <Link style={{ textDecoration: 'none' }} to="petlist"><Button className={classes.button}>Find Fur fmaily</Button></Link>
               : <Button className={classes.button} onClick={handleCreateOpen}>Create Account</Button>
             }
           </Container>
