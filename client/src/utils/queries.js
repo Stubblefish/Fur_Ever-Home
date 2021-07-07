@@ -21,6 +21,7 @@ export const QUERY_ALL_PETS = gql`
     _id
     name
     description
+    image
     price
     breed {
       name

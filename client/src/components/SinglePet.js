@@ -14,7 +14,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: 345,
+    width: '18rem',
     margin: '0.5vw'
   },
   media: {
@@ -40,7 +40,6 @@ function SinglePet(info) {
     price,
     description,
     breed,
-    age
   } = info;
 
   const classes = useStyles();
@@ -62,9 +61,6 @@ function SinglePet(info) {
         title={name}
       />
       <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          {age}
-        </Typography>
         <Typography variant="body2" color="textSecondary" component="p">
           {price}
         </Typography>

@@ -26,7 +26,7 @@ const resolvers = {
 
     pet: async (parent, {_id}) => {
       console.log('Iam pets')
-      return await Pet.findById(_id).populate("breed");
+      return await Pet.findById().populate("breed");
     },
     user: async (parent, args, context) => {
       if (context.user) {
