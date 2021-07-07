@@ -102,9 +102,7 @@ const Nav = () => {
             <Link style={{ textDecoration: 'none' }} to="/petlist">
               {mobile ? <IconButton className={classes.button}><SearchIcon /> </IconButton> : <Button className={classes.button} color="inherit">Search fur family</Button>}
             </Link>
-            <Link style={{ textDecoration: 'none' }} to="/save">
-              {mobile ? <IconButton className={classes.button}><FavoriteBorderIcon /> </IconButton> : <Button className={classes.button} color="inherit">Who's ready?</Button>}
-            </Link>
+            {mobile ? <IconButton className={classes.button}><FavoriteBorderIcon /> </IconButton> : <Button className={classes.button} color="inherit">Who's ready?</Button>}
 
             {loggedIn
               ? mobile
