@@ -72,6 +72,7 @@ const Login = (props) => {
       const mutationResponse = await login({
         variables: { email: formState.email, password: formState.password },
       });
+      console.log(mutationResponse.data);
       const token = mutationResponse.data.login.token;
       Auth.login(token);
     } catch (e) {
@@ -105,7 +106,7 @@ const Login = (props) => {
           <Typography component="h1" variant="h5">
             Log in
           </Typography>
-          <form className={classes.form} noValidate>
+          <form className={classes.form} noValidate onSubmit={handleFormSubmit}>
             <TextField
               variant="outlined"
               margin="normal"
@@ -131,7 +132,6 @@ const Login = (props) => {
               onChange={handleChange}
             />
             <Button
-              onSubmit={handleFormSubmit}
               type="submit"
               fullWidth
               variant="contained"
