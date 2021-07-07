@@ -66,7 +66,7 @@ function SinglePet(info) {
       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-          {price}
+          {price} years old
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
@@ -90,7 +90,7 @@ function SinglePet(info) {
           <Typography paragraph>
             {description}
           </Typography>
-          <Typography>
+          <Typography style={{fontSize: '0.7vw'}}>
             You know... Wagging tails never disappoint
           </Typography>
         </CardContent>
