@@ -24,9 +24,9 @@ const resolvers = {
       return await Pet.find(params).populate("breed");
     },
 
-    pet: async (parent, {_id}) => {
-      console.log('Iam pets')
-      return await Pet.findById().populate("breed");
+    pet: async (parent) => {
+      console.log('I am pets')
+      return await Pet.find().populate("breed");
     },
     user: async (parent, args, context) => {
       if (context.user) {
@@ -101,7 +101,7 @@ const resolvers = {
         await User.findByIdAndUpdate(context.user._id, {
           $push: { adopt: adopt },
         });
-        return order;
+        return adoption;
       }
       throw new AuthenticationError("Not logged in!");
     },

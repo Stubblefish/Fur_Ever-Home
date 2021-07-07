@@ -44,10 +44,12 @@ function SinglePet(info) {
 
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
+  // const [favorite, setFavorite]
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
 
   return (
     <Card className={classes.root}>

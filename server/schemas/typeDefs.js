@@ -37,14 +37,15 @@ const typeDefs = gql`
 
   type Query {
     breeds: [Breed]
-    pets: [Pet]
-    pet(_id: ID!): Pet
+    pets(breed: ID, name: String): [Pet]
+    pet: Pet
     user: User
     adoption(_id: ID!): Adoption
     checkout(pets: [ID]!): Checkout
+
   }
 
-  type Mutation {
+    type Mutation {
     addUser(firstName: String!, 
     lastName: String!, 
     email: String!, 
