@@ -10,7 +10,6 @@ import Grid from '@material-ui/core/Grid';
 
 function PetList() {
   const { data: petData } = useQuery(QUERY_ALL_PETS);
-  console.log(petData);
 
   const pets = petData?.pets || [];
   let currentBreed;
@@ -27,31 +26,27 @@ function PetList() {
   const setBreed = (breed) => {
     currentBreed = breed
     console.log(currentBreed)
-    // update current breed state
-    // use useContext
   }
 
   return (
     <React.Fragment>
       <CssBaseline />
-      <Container maxWidth='xl' style={{ height: '50vw', backgroundColor: "whitesmoke" }}>
+      <Container relative maxWidth='xl' style={{ backgroundColor: "whitesmoke" }}>
         <BreedMenu setBreed={setBreed} />
         <Typography component='div' style={{ fontWeight: "bold", backgroundColor: "whitesmoke" }}>Standing By:</Typography>
         {pets.length ? (
-          <Grid container spacing={1}>
-            <Grid item xl={12} style={{ display: "flex", justifyContent: "center", alignItems: 'center', margin: '1vw' }}>
-              {filterPets().map((pet) => (
-                <SinglePet
-                  key={pet._id}
-                  _id={pet._id}
-                  image={pet.image}
-                  name={pet.name}
-                  price={pet.price}
-                  breed={pet.breed.name}
-                  description={pet.description}
-                />
-              ))}
-            </Grid>
+          <Grid container spacing={1} style={{ display: "flex", justifyContent: "flex-start", alignItems: 'center' }}>
+            {filterPets().map((pet) => (
+              <SinglePet
+                key={pet._id}
+                _id={pet._id}
+                image={pet.image}
+                name={pet.name}
+                price={pet.price}
+                breed={pet.breed.name}
+                description={pet.description}
+              />
+            ))}
           </Grid>
         ) : (
           <Typography>Your family to-be is not ready yet!!</Typography>
