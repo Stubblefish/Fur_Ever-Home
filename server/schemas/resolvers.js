@@ -7,7 +7,7 @@ const resolvers = {
     breeds: async () => {
       return await Breed.find();
     },
-    pet: async (parent, { breed, name }) => {
+    pets: async (parent, { breed, name }) => {
       console.log("pet ran");
       const params = {};
 
@@ -24,13 +24,14 @@ const resolvers = {
       return await Pet.find(params).populate("breed");
     },
 
-    pets: async (parent, { _id }) => {
-      return await Pet.findById(_id).populate("breed");
+    pet: async (parent) => {
+      console.log('I am pets')
+      return await Pet.find().populate("breed");
     },
     user: async (parent, args, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
-          path: "adopts.pets",
+          path: "adoptions.pets",
           populate: "breed",
         });
 
@@ -95,12 +96,12 @@ const resolvers = {
     addAdoption: async (parent, { pet }, context) => {
       console.log(context);
       if (context.user) {
-        const adopt = new Adoption({ pets });
+        const adoption = new Adoption({ pets });
 
         await User.findByIdAndUpdate(context.user._id, {
-          $push: { adopt: adopt },
+          $push: { adoptions: adoption },
         });
-        return order;
+        return adoption;
       }
       throw new AuthenticationError("Not logged in!");
     },

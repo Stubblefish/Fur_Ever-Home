@@ -20,7 +20,6 @@ export const ADD_ADOPTION = gql`
         name
         description
         price
-        age
         breed {
           name
         }

@@ -9,14 +9,13 @@ import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import { red } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: 345,
+    width: '18rem',
+    margin: '0.5vw'
   },
   media: {
     height: 0,
@@ -31,10 +30,7 @@ const useStyles = makeStyles((theme) => ({
   },
   expandOpen: {
     transform: 'rotate(180deg)',
-  },
-  avatar: {
-    backgroundColor: red[500],
-  },
+  }
 }));
 
 function SinglePet(info) {
@@ -44,24 +40,20 @@ function SinglePet(info) {
     price,
     description,
     breed,
-    age
   } = info;
 
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
+  // const [favorite, setFavorite]
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
+
   return (
     <Card className={classes.root}>
       <CardHeader
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
         title={name}
         subheader={breed}
       />
@@ -71,9 +63,6 @@ function SinglePet(info) {
         title={name}
       />
       <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          {age}
-        </Typography>
         <Typography variant="body2" color="textSecondary" component="p">
           {price}
         </Typography>
@@ -95,13 +84,9 @@ function SinglePet(info) {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography paragraph>Method:</Typography>
+          <Typography paragraph>Hi my name is {name}:</Typography>
           <Typography paragraph>
-            Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10
-            minutes.
-          </Typography>
-          <Typography paragraph>
-        {description}
+            {description}
           </Typography>
           <Typography>
             You know... Wagging tails never disappoint

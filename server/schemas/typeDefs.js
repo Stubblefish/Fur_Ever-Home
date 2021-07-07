@@ -12,7 +12,6 @@ const typeDefs = gql`
     description: String
     image: String
     price: Float
-    age: Int
     breed: Breed
   }
 
@@ -39,14 +38,14 @@ const typeDefs = gql`
   type Query {
     breeds: [Breed]
     pets(breed: ID, name: String): [Pet]
-    pet(_id: ID!): Pet
+    pet: Pet
     user: User
     adoption(_id: ID!): Adoption
     checkout(pets: [ID]!): Checkout
 
   }
 
-  type Mutation {
+    type Mutation {
     addUser(firstName: String!, 
     lastName: String!, 
     email: String!, 

@@ -23,10 +23,7 @@ const petSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Breed",
     required: true,
-  },
-  age: {
-    type: Number,
-  },
+  }
 });
 
 const Pet = mongoose.model("Pet", petSchema);

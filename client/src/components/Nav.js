@@ -112,23 +112,25 @@ const Nav = () => {
         >
           <Toolbar>
             <Typography variant="h3" className={classes.title} as={Link} to="/">
-              {mobile ? (
-                <IconButton className={classes.button}>
-                  <PetsIcon />{" "}
-                </IconButton>
-              ) : (
-                <Button
-                  style={{
-                    color: "white",
-                    fontFamily: "Nunito",
-                    fontSize: "1.5rem",
-                    fontWeight: "bolder",
-                  }}
-                >
-                  fur-ever Home{" "}
-                  <PetsIcon style={{ fontSize: "1.5rem", margin: "0.5vw" }} />
-                </Button>
-              )}
+              <Link to="/">
+                {mobile ? (
+                  <IconButton className={classes.button}>
+                    <PetsIcon />{" "}
+                  </IconButton>
+                ) : (
+                  <Button
+                    style={{
+                      color: "white",
+                      fontFamily: "Nunito",
+                      fontSize: "1.5rem",
+                      fontWeight: "bolder",
+                    }}
+                  >
+                    fur-ever Home{" "}
+                    <PetsIcon style={{ fontSize: "1.5rem", margin: "0.5vw" }} />
+                  </Button>
+                )}
+              </Link>
             </Typography>
             <Link to="/petlist">
               {mobile ? (
@@ -141,15 +143,17 @@ const Nav = () => {
                 </Button>
               )}
             </Link>
-            {mobile ? (
-              <IconButton className={classes.button}>
-                <FavoriteBorderIcon />{" "}
-              </IconButton>
-            ) : (
-              <Button className={classes.button} color="inherit">
-                Who's ready?
-              </Button>
-            )}
+            <Link to="/save">
+              {mobile ? (
+                <IconButton className={classes.button}>
+                  <FavoriteBorderIcon />{" "}
+                </IconButton>
+              ) : (
+                <Button className={classes.button} color="inherit">
+                  Who's ready?
+                </Button>
+              )}
+            </Link>
 
             {loggedIn ? (
               mobile ? (
