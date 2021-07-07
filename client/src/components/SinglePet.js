@@ -50,7 +50,7 @@ function SinglePet(info) {
       <CardMedia className={classes.media} image={image} title={name} />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-          {price}
+          Age: {price}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
