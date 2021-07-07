@@ -8,6 +8,7 @@ const resolvers = {
       return await Breed.find();
     },
     pet: async (parent, { breed, name }) => {
+      console.log("pet ran");
       const params = {};
 
       if (breed) {
@@ -41,14 +42,14 @@ const resolvers = {
     adoption: async (parent, { _id }, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
-          path: 'adoptions.pets',
-          populate: 'breed'
+          path: "adoptions.pets",
+          populate: "breed",
         });
 
         return user.adoptions.id(_id);
       }
 
-      throw new AuthenticationError('Not logged in');
+      throw new AuthenticationError("Not logged in");
     },
     // checkout for stripe courtesy of npokamestov from git
     checkout: async (parent, args, context) => {
@@ -62,7 +63,6 @@ const resolvers = {
           name: pets[i].name,
           description: pets[i].description,
           images: [`${url}/images/${pets[i].image}`],
-
         });
         const price = await stripe.prices.create({
           pet: pet.id,
@@ -95,7 +95,6 @@ const resolvers = {
     addAdoption: async (parent, { pet }, context) => {
       console.log(context);
       if (context.user) {
-
         const adopt = new Adoption({ pets });
 
         await User.findByIdAndUpdate(context.user._id, {

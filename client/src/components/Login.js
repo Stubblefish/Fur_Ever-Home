@@ -1,30 +1,29 @@
-import React, { useState } from 'react';
-import { useMutation } from '@apollo/client';
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
+import React, { useState } from "react";
+import { useMutation } from "@apollo/client";
+import Avatar from "@material-ui/core/Avatar";
+import Button from "@material-ui/core/Button";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import TextField from "@material-ui/core/TextField";
+import Link from "@material-ui/core/Link";
+import Grid from "@material-ui/core/Grid";
+import Box from "@material-ui/core/Box";
 import LockOpenOutlined from "@material-ui/icons/LockOpenOutlined";
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import SharedContext from './SharedContext';
-import { LOGIN } from '../utils/mutations';
-import Auth from '../utils/auth';
-
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
+import Container from "@material-ui/core/Container";
+import SharedContext from "./SharedContext";
+import { LOGIN } from "../utils/mutations";
+import Auth from "../utils/auth";
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
+      {"Copyright © "}
       <Link color="inherit" href="https://material-ui.com/">
         Fur-Ever Home
-      </Link>{' '}
+      </Link>{" "}
       {new Date().getFullYear()}
-      {'.'}
+      {"."}
       <br />
       All Rights Reserved
     </Typography>
@@ -33,9 +32,9 @@ function Copyright() {
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
   },
   avatar: {
     margin: theme.spacing(1),
@@ -48,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
     height: theme.spacing(4),
   },
   form: {
-    width: '100%',
+    width: "100%",
     marginTop: theme.spacing(4),
   },
   submit: {
@@ -58,8 +57,13 @@ const useStyles = makeStyles((theme) => ({
 
 const Login = (props) => {
   const classes = useStyles();
-  const { createAccountOpen, setCreateAccountOpen, handleCreateOpen, handleLoginClose } = React.useContext(SharedContext);
-  const [formState, setFormState] = useState({ email: '', password: '' });
+  const {
+    createAccountOpen,
+    setCreateAccountOpen,
+    handleCreateOpen,
+    handleLoginClose,
+  } = React.useContext(SharedContext);
+  const [formState, setFormState] = useState({ email: "", password: "" });
   const [login, { error }] = useMutation(LOGIN);
 
   const handleFormSubmit = async (event) => {
@@ -85,7 +89,14 @@ const Login = (props) => {
 
   return (
     <Container component="main" maxWidth="sm">
-      <SharedContext.Provider value={{ createAccountOpen, setCreateAccountOpen, handleCreateOpen, handleLoginClose }} >
+      <SharedContext.Provider
+        value={{
+          createAccountOpen,
+          setCreateAccountOpen,
+          handleCreateOpen,
+          handleLoginClose,
+        }}
+      >
         <CssBaseline />
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
@@ -94,7 +105,7 @@ const Login = (props) => {
           <Typography component="h1" variant="h5">
             Log in
           </Typography>
-          <form className={classes.form} noValidate onSubmit={handleFormSubmit}>
+          <form className={classes.form} noValidate>
             <TextField
               variant="outlined"
               margin="normal"
@@ -120,6 +131,7 @@ const Login = (props) => {
               onChange={handleChange}
             />
             <Button
+              onSubmit={handleFormSubmit}
               type="submit"
               fullWidth
               variant="contained"
@@ -130,19 +142,21 @@ const Login = (props) => {
             </Button>
             <Grid container>
               <Grid item>
-                <Link component="button"
+                <Link
+                  component="button"
                   onClick={() => {
                     handleLoginClose();
                     handleCreateOpen();
                   }}
-                  variant="body2">
+                  variant="body2"
+                >
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
             </Grid>
             {error ? (
               <div>
-                <p style={{ color: 'red' }}>Please Provide Vaild Information</p>
+                <p style={{ color: "red" }}>Please Provide Vaild Information</p>
               </div>
             ) : null}
           </form>
@@ -153,5 +167,5 @@ const Login = (props) => {
       </SharedContext.Provider>
     </Container>
   );
-}
+};
 export default Login;
