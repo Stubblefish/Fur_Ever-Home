@@ -32,7 +32,7 @@ function PetList() {
     <React.Fragment>
       <CssBaseline />
       <Container maxWidth='xl' style={{ backgroundColor: "whitesmoke" }}>
-        <BreedMenu setBreed={setBreed} />
+        <BreedMenu style={{ display: 'flex', justifyContent: 'flex-start' }} setBreed={setBreed} />
         <Typography component='div' style={{ fontWeight: "bold", backgroundColor: "whitesmoke" }}>Standing By:</Typography>
         {pets.length ? (
           <Grid container spacing={1} style={{ display: "flex", justifyContent: "flex-start", alignItems: 'center' }}>
