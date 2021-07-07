@@ -1,13 +1,17 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 import SinglePet from './SinglePet';
-import { QUERY_PETS } from '../utils/queries';
+import { QUERY_ALL_PETS } from '../utils/queries';
 import BreedMenu from '../components/BreedMenu';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
 
-function PetList({ currentBreed }) {
-  const { data } = useQuery(QUERY_PETS);
+function PetList() {
+  const { data: petData } = useQuery(QUERY_ALL_PETS);
 
-  const pets = data?.pets || [];
+  const pets = petData?.pets || [];
+  let currentBreed;
 
   function filterPets() {
     if (!currentBreed) {
@@ -18,14 +22,23 @@ function PetList({ currentBreed }) {
       (pet) => pet.breed._id === currentBreed
     );
   }
+  const setBreed = (breed) => {
+    currentBreed = breed
+    console.log(currentBreed)
+    // update current breed state
+    // use useContext
+  }
+
+
 
   return (
-    <>
-      <BreedMenu />
-      <div className="my-2">
-        <h2>Standing By:</h2>
+    <React.Fragment>
+      <CssBaseline />
+      <Container maxWidth='xl' style={{ height: '50vw', backgroundColor: "whitesmoke" }}>
+        <BreedMenu setBreed={setBreed} />
+        <Typography component='div' style={{ fontWeight: "bold", backgroundColor: "whitesmoke" }}>Standing By:</Typography>
         {pets.length ? (
-          <div className="flex-row">
+          <Container style={{ display: "flex", justifyContent: "center", alignItems: 'center', margin: '1vw' }}>
             {filterPets().map((pet) => (
               <SinglePet
                 key={pet._id}
@@ -36,12 +49,12 @@ function PetList({ currentBreed }) {
                 age={pet.age}
               />
             ))}
-          </div>
+          </Container>
         ) : (
-          <h3>Your family to-be is not ready yet!!</h3>
+          <Typography>Your family to-be is not ready yet!!</Typography>
         )}
-      </div>
-    </>
+      </Container>
+    </React.Fragment>
   );
 }
 

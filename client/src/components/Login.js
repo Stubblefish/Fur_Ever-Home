@@ -105,7 +105,7 @@ const Login = (props) => {
           <Typography component="h1" variant="h5">
             Log in
           </Typography>
-          <form className={classes.form} noValidate>
+          <form className={classes.form} noValidate onSubmit={handleFormSubmit}>
             <TextField
               variant="outlined"
               margin="normal"
@@ -131,7 +131,6 @@ const Login = (props) => {
               onChange={handleChange}
             />
             <Button
-              onSubmit={handleFormSubmit}
               type="submit"
               fullWidth
               variant="contained"

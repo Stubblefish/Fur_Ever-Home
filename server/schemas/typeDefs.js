@@ -38,12 +38,11 @@ const typeDefs = gql`
 
   type Query {
     breeds: [Breed]
-    pets(breed: ID, name: String): [Pet]
+    pets: [Pet]
     pet(_id: ID!): Pet
     user: User
     adoption(_id: ID!): Adoption
     checkout(pets: [ID]!): Checkout
-
   }
 
   type Mutation {

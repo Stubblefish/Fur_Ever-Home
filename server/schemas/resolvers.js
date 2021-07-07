@@ -7,7 +7,7 @@ const resolvers = {
     breeds: async () => {
       return await Breed.find();
     },
-    pet: async (parent, { breed, name }) => {
+    pets: async (parent, { breed, name }) => {
       console.log("pet ran");
       const params = {};
 
@@ -24,7 +24,8 @@ const resolvers = {
       return await Pet.find(params).populate("breed");
     },
 
-    pets: async (parent, { _id }) => {
+    pet: async (parent, {_id}) => {
+      console.log('Iam pets')
       return await Pet.findById(_id).populate("breed");
     },
     user: async (parent, args, context) => {
