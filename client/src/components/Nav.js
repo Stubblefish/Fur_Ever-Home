@@ -111,49 +111,17 @@ const Nav = () => {
           position="static"
         >
           <Toolbar>
-            <Typography variant="h3" className={classes.title} as={Link} to="/">
-              <Link to="/">
-                {mobile ? (
-                  <IconButton className={classes.button}>
-                    <PetsIcon />{" "}
-                  </IconButton>
-                ) : (
-                  <Button
-                    style={{
-                      color: "white",
-                      fontFamily: "Nunito",
-                      fontSize: "1.5rem",
-                      fontWeight: "bolder",
-                    }}
-                  >
-                    fur-ever Home{" "}
-                    <PetsIcon style={{ fontSize: "1.5rem", margin: "0.5vw" }} />
-                  </Button>
-                )}
+
+            <Typography variant="h3" className={classes.title} as={Link} to='/'>
+              <Link style={{ textDecoration: 'none' }} to="/">
+                {mobile ? <IconButton className={classes.button}><PetsIcon /> </IconButton> : <Button style={{ color: "white", fontFamily: "Nunito", fontSize: '1.5rem', fontWeight: 'bolder' }}>fur-ever Home <PetsIcon style={{ fontSize: '1.5rem', margin: '0.5vw' }} /></Button>}
               </Link>
             </Typography>
-            <Link to="/petlist">
-              {mobile ? (
-                <IconButton className={classes.button}>
-                  <SearchIcon />{" "}
-                </IconButton>
-              ) : (
-                <Button className={classes.button} color="inherit">
-                  Search fur family
-                </Button>
-              )}
+            <Link style={{ textDecoration: 'none' }} to="/petlist">
+              {mobile ? <IconButton className={classes.button}><SearchIcon /> </IconButton> : <Button className={classes.button} color="inherit">Search fur family</Button>}
             </Link>
-            <Link to="/save">
-              {mobile ? (
-                <IconButton className={classes.button}>
-                  <FavoriteBorderIcon />{" "}
-                </IconButton>
-              ) : (
-                <Button className={classes.button} color="inherit">
-                  Who's ready?
-                </Button>
-              )}
-            </Link>
+            {mobile ? <IconButton className={classes.button}><FavoriteBorderIcon /> </IconButton> : <Button className={classes.button} color="inherit">Who's ready?</Button>}
+
 
             {loggedIn ? (
               mobile ? (
