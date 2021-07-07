@@ -24,7 +24,7 @@ db.once("open", async () => {
       name: "Sophie",
       description:
         "A Pit Bull with the most loving of personalities! She may be a tri-pod but that doesn't slow her down!",
-      breed: breeds[0]._id, //breed[0] refers to Pitbull
+      breed: "Pit Bull",
       image: "Dog-1.jpg",
       price: 200,
       age: 9,
