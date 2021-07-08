@@ -9,8 +9,9 @@ import Footer from './components/Footer';
 import PetList from './components/PetList';
 import SharedContext from './components/SharedContext';
 
+
 const httpLink = createHttpLink({
-  uri: '/graphql',
+  uri: 'http://localhost3001/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
