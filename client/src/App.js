@@ -10,7 +10,7 @@ import PetList from './components/PetList';
 import SharedContext from './components/SharedContext';
 
 const httpLink = createHttpLink({
-  uri: 'http://graphql',
+  uri: '/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
