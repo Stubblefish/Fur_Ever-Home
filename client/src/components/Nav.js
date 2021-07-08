@@ -10,7 +10,6 @@ import PetsIcon from "@material-ui/icons/Pets";
 import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
-import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
 import Dialog from "@material-ui/core/Dialog";
@@ -120,7 +119,6 @@ const Nav = () => {
             <Link style={{ textDecoration: 'none' }} to="/petlist">
               {mobile ? <IconButton className={classes.button}><SearchIcon /> </IconButton> : <Button className={classes.button} color="inherit">Search fur family</Button>}
             </Link>
-            {mobile ? <IconButton className={classes.button}><FavoriteBorderIcon /> </IconButton> : <Button className={classes.button} color="inherit">Who's ready?</Button>}
 
 
             {loggedIn ? (
