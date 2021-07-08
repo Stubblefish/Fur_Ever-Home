@@ -14,16 +14,14 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-
-    width: '20rem',
-    margin: '0.5vw'
+    width: "20rem",
+    margin: "0.5vw",
   },
   media: {
-    height: '18rem',
-    width: '100%',
-    objectFit: 'contain',
-    paddingTop: '56.25%', // 16:9
-
+    height: "18rem",
+    width: "100%",
+    objectFit: "contain",
+    paddingTop: "56.25%", // 16:9
   },
   expand: {
     transform: "rotate(0deg)",
@@ -42,10 +40,15 @@ function SinglePet(info) {
 
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
-  // const [favorite, setFavorite]
+  const [favorite, setFavorite] = React.useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
+  };
+
+  const addFavorite = () => {
+    console.log(name, "Added to favorites");
+    setFavorite([name]);
   };
 
   return (
@@ -54,13 +57,11 @@ function SinglePet(info) {
       <CardMedia className={classes.media} image={image} title={name} />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-
           Age: {price}
-
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
+        <IconButton onClick={addFavorite} aria-label="add to favorites">
           <FavoriteIcon />
         </IconButton>
         <IconButton
@@ -76,15 +77,11 @@ function SinglePet(info) {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-
           <Typography paragraph>Hi my name is {name}:</Typography>
-          <Typography paragraph>
-            {description}
-          </Typography>
-          <Typography style={{fontSize: '0.7vw'}}>
+          <Typography paragraph>{description}</Typography>
+          <Typography style={{ fontSize: "0.7vw" }}>
             You know... Wagging tails never disappoint
           </Typography>
-
         </CardContent>
       </Collapse>
     </Card>
