@@ -40,15 +40,14 @@ function SinglePet(info) {
 
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
-  const [favorite, setFavorite] = React.useState(false);
+  const [favored, setFavored] = React.useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
-  const addFavorite = () => {
-    console.log(name, "Added to favorites");
-    setFavorite([name]);
+  const handleFavorClick = () => {
+    setFavored(!favored);
   };
 
   return (
@@ -61,9 +60,18 @@ function SinglePet(info) {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton onClick={addFavorite} aria-label="add to favorites">
-          <FavoriteIcon />
+        <IconButton aria-label="add to favorites">
+          <FavoriteIcon
+            onClick={handleFavorClick}
+            variant="contain"
+            color={favored ? "secondary" : "defualt"}
+          />
         </IconButton>
+        {favored ? (
+          <Typography style={{ fontSize: "0.8vw" }}>
+            Adoption Reserved
+          </Typography>
+        ) : null}
         <IconButton
           className={clsx(classes.expand, {
             [classes.expandOpen]: expanded,
