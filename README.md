@@ -10,4 +10,4 @@ As animal lovers we wanted an easier way to find and adopt animals that needed h
 
 Tools Used
 
-GQL, MongoDB, React, Apollo, Express, Concurrently, Node, Love
+GQL, MongoDB, React, Apollo, Express, Concurrently, Node
