@@ -92,7 +92,7 @@ const Nav = () => {
   const theme = useTheme();
   const mobile = useMediaQuery(theme.breakpoints.down("sm"));
   const loggedIn = Auth.loggedIn();
-  console.log("what am i?", loggedIn);
+
   return (
     <div className={classes.root}>
       <SharedContext.Provider
