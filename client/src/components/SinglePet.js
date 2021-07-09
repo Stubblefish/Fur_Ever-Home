@@ -60,27 +60,12 @@ function SinglePet(info) {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-<<<<<<< HEAD
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon
-            onClick={handleFavorClick}
-            variant="contain"
-            color={favored ? "secondary" : "defualt"}
-          />
-        </IconButton>
-        {favored ? (
-          <Typography style={{ fontSize: "0.8vw" }}>
-            Adoption Reserved
-          </Typography>
-        ) : null}
-=======
         <IconButton aria-label="add to favorites" onClick={handleFavorClick} variant="contain" color={favored ? "secondary" : "default"} >
           <FavoriteIcon />
         </IconButton>
         {favored ?
           <Typography style={{ fontSize: "0.8vw" }}>Adoption Reserved</Typography>
           : null}
->>>>>>> develop-Richard
         <IconButton
           className={clsx(classes.expand, {
             [classes.expandOpen]: expanded,
