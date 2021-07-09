@@ -53,11 +53,17 @@ We all love animals, an consider them as friends and family, yet finding the per
 
 
 ## Technology
-    - Express
-    - Npm
-    - Java Script
-    - nodejs
-    - react
+- React
+- JavaScript
+- Express
+- Npm
+- NodeJs
+- GraphQl
+- Apollo-server
+- MongoDB
+- Material UI
+- JWT
+
    
 
 ## Credits
