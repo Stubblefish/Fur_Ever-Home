@@ -1,70 +1,94 @@
-# Getting Started with Create React App
+### 24. Interactive MERN SPA Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description 
 
-## Available Scripts
+We all love animals, an consider them as friends and family, yet finding the perfect animal Fur you can be quite a challenge. Making an informed choice based on both you and your potential fur-ever pet’s needs is essential. Some animals are high maintenance, some relaxed, some good with kids and some love swimming! Although there is not one perfect pet Fur everyone, there are many reasons why you should consider adopting.
 
-In the project directory, you can run:
+ We’re here to change that, by helping users to search for pets so you can see who’s ready to be a part of your Fur-Ever Family, and to help these animals find a Fur-Ever Home.
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Table of Contents (Optional)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+* [Installation](#installation)
+* [Usage](#usage)
+* [Technology](#technology)
+* [Credits](#credits)
+* [License](#license)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Please visit Website https://shielded-castle-31591.herokuapp.com/
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Usage 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+![alt text](./public/images/screenshot/ss1.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Welcome to Furever Home
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![alt text](./public/images/screenshot/ss2.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Please log in before you search for furever family
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+![alt text](./public/images/screenshot/ss3.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- if you do not have account please create account
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![alt text](./public/images/screenshot/ss4.png)
 
-### Code Splitting
+- if you are reaching website without permission they will block the way of entering it
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+![alt text](./public/images/screenshot/ss5.png)
 
-### Analyzing the Bundle Size
+- Once you log in your family-to-be will be show up
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+![alt text](./public/images/screenshot/ss6.png)
 
-### Making a Progressive Web App
+- click expand to see their introduction
+- click heart to reserve adoption ;)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Technology
+    - Express
+    - Npm
+    - Java Script
+    - nodejs
+    - react
+   
 
-### Deployment
+## Credits
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+ - Richard Kim: richardyjkim (github)
+ - Goerge Wise: Stubblefish (github)
+ - Nichole Christianson: nmchristianson (github)
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## License
+
+MIT License
+
+Copyright (c) [2021] [Richard Y Kim]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+© 2021 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
