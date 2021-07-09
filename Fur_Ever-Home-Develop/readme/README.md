@@ -4,10 +4,10 @@ Link to Application: https://github.com/Stubblefish/Fur_Ever-Home.git
 ## Description
 As  Full-Stack Web Developers, we wanted to create a tool to help individuals prioritize their mental well-being, by allowing them to track their mood daily and complete journal entries with predetermined questions. Each day the user will be able to select their mood for the day, add a journal entry, add a photo and submit for tracking. 
 
-Login Page
+Login Page Screenshot
 https://github.com/Stubblefish/Fur_Ever-Home/issues/23#issue-940353861
 
-Signup Page
+Signup Page Screenshot
 https://github.com/Stubblefish/Fur_Ever-Home/issues/24#issue-940354114
 
 Demo Video 
