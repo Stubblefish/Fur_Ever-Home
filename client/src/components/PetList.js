@@ -54,7 +54,9 @@ function PetList() {
               ))}
             </Grid>
           ) : (
-            <Typography>Your family to-be is not ready yet!!</Typography>
+            <Grid style={{ backgroundColor: "whitesmoke", height: '60vw' }}>
+              <Typography>Your family to-be is not ready yet!!</Typography>
+            </Grid>
           )}
         </Container>
         : <Reject />}
