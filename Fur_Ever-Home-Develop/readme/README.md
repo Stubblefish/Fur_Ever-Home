@@ -10,7 +10,7 @@ https://github.com/Stubblefish/Fur_Ever-Home/issues/23#issue-940353861
 Signup Page
 https://github.com/Stubblefish/Fur_Ever-Home/issues/24#issue-940354114
 
-Demo
+Demo Video 
 https://github.com/Stubblefish/Fur_Ever-Home/issues/25#issue-940356919
 
 ## Table of Contents
