@@ -14,16 +14,14 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-
-    width: '20rem',
-    margin: '0.5vw'
+    width: "20rem",
+    margin: "0.5vw",
   },
   media: {
-    height: '18rem',
-    width: '100%',
-    objectFit: 'contain',
-    paddingTop: '56.25%', // 16:9
-
+    height: "18rem",
+    width: "100%",
+    objectFit: "contain",
+    paddingTop: "56.25%", // 16:9
   },
   expand: {
     transform: "rotate(0deg)",
@@ -44,14 +42,13 @@ function SinglePet(info) {
   const [expanded, setExpanded] = React.useState(false);
   const [favored, setFavored] = React.useState(false);
 
-
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
   const handleFavorClick = () => {
     setFavored(!favored);
-  }
+  };
 
   return (
     <Card className={classes.root}>
@@ -59,18 +56,22 @@ function SinglePet(info) {
       <CardMedia className={classes.media} image={image} title={name} />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-
           Age: {price}
-
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
-          <FavoriteIcon onClick={handleFavorClick} variant="contain" color={favored ? "secondary" : "defualt"} />
+          <FavoriteIcon
+            onClick={handleFavorClick}
+            variant="contain"
+            color={favored ? "secondary" : "defualt"}
+          />
         </IconButton>
-        {favored ?
-          <Typography style={{ fontSize:"0.8vw" }}>Adoption Reserved</Typography>
-          : null}
+        {favored ? (
+          <Typography style={{ fontSize: "0.8vw" }}>
+            Adoption Reserved
+          </Typography>
+        ) : null}
         <IconButton
           className={clsx(classes.expand, {
             [classes.expandOpen]: expanded,
@@ -84,15 +85,11 @@ function SinglePet(info) {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-
           <Typography paragraph>Hi my name is {name}:</Typography>
-          <Typography paragraph>
-            {description}
-          </Typography>
-          <Typography style={{ fontSize: '0.7vw' }}>
+          <Typography paragraph>{description}</Typography>
+          <Typography style={{ fontSize: "0.7vw" }}>
             You know... Wagging tails never disappoint
           </Typography>
-
         </CardContent>
       </Collapse>
     </Card>
